@@ -47,4 +47,8 @@ export class EditComponent implements OnInit {
     }).catch((error) => {
       console.error(error);
     })};
+
+  cancel() {
+    this.router.navigate(['']);
+  }
 }

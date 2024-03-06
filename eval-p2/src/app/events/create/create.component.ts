@@ -33,4 +33,8 @@ export class CreateComponent {
       console.error(error);
     });
   }
+
+  cancel() {
+    this.router.navigate(['']);
+  }
 }
