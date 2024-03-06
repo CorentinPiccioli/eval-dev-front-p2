@@ -1,0 +1,42 @@
+<div class="p-4">
+  <h1 class="text-3xl font-bold mb-6">Liste des événements</h1>
+  <table class="w-full border-collapse border border-gray-300">
+    <thead>
+    <tr class="bg-gray-200">
+      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 border-b">Titre</th>
+      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 border-b">Description</th>
+      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 border-b">Date</th>
+      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 border-b">Lieu</th>
+      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700 border-b">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let event of events" class="bg-white">
+      <td class="px-6 py-4 whitespace-nowrap border-b">
+        <div class="flex items-center">
+          <div class="ml-4">
+            <div class="text-sm font-medium text-gray-900">{{ event.Title }}</div>
+          </div>
+        </div>
+      </td>
+      <td class="px-6 py-4 whitespace-nowrap border-b">
+        <div class="text-sm text-gray-900">{{ event.Description }}</div>
+      </td>
+      <td class="px-6 py-4 whitespace-nowrap border-b">
+        <div class="text-sm text-gray-900">{{ event.Date | date:'short' }}</div>
+      </td>
+      <td class="px-6 py-4 whitespace-nowrap border-b">
+        <div class="text-sm text-gray-900">{{ event.Location }}</div>
+      </td>
+      <td class="px-6 py-4 whitespace-nowrap border-b">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
+          Modifier
+        </button>
+        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

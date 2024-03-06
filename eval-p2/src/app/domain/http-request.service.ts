@@ -7,7 +7,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 export class HttpRequestService {
 
   private _header: HttpHeaders;
-  public api =  "localhost: /api";
+  public api =  "http://localhost:7071/api";
   constructor(private _httpClient: HttpClient) {
     this._header = new HttpHeaders();
   }
