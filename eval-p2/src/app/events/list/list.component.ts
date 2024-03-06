@@ -32,4 +32,15 @@ export class ListComponent implements OnInit{
   editEvent(event: IEvent) {
     this.router.navigate(['edit', event.Id], {state: {event: event}});
   }
+
+  onDelete(event: IEvent) {
+    if(confirm('Êtes vous sur de vouloir supprimer cet événement ?')) {
+      this._eventService.deleteEvent(event.Id).then(() => {
+        this.events = this.events.filter(e => e.Id !== event.Id);
+      }).catch((error) => {
+        console.error(error);
+      });
+    }
+  }
 }
+

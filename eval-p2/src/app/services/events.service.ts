@@ -44,8 +44,4 @@ export class EventsService {
       });
     });
   }
-
-  getEvent(eventId: any) {
-
-  }
 }
