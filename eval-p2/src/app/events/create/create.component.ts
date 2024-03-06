@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {EventsService} from "../../services/events.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {IEvent} from "../../interfaces/ievent";
 
 @Component({
   selector: 'app-create',
@@ -15,7 +17,7 @@ export class CreateComponent {
 
   eventForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private eventsService: EventsService) {
+  constructor(private fb: FormBuilder, private eventsService: EventsService, private router: Router, private route: ActivatedRoute) {
     this.eventForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
@@ -25,6 +27,10 @@ export class CreateComponent {
   }
 
   onSubmit() {
-
+    this.eventsService.createEvent(this.eventForm.value).then(() => {
+      this.router.navigate(['']);
+    }).catch((error) => {
+      console.error(error);
+    });
   }
 }

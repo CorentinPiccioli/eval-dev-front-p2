@@ -29,7 +29,7 @@ export class EventsService {
 
   public updateEvent(event: IEvent) {
     return new Promise<IEvent>((resolve, reject) => {
-      return this._httpRequest.update<any>('/events', event).subscribe({
+      return this._httpRequest.update<any>('/event/update', event).subscribe({
         next: result => resolve(result.Value),
         error: error => reject(error)
       });
@@ -43,5 +43,9 @@ export class EventsService {
         error: error => reject(error)
       });
     });
+  }
+
+  getEvent(eventId: any) {
+
   }
 }

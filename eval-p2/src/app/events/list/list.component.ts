@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {EventsService} from "../../services/events.service";
 import {IEvent} from "../../interfaces/ievent";
 import {CommonModule, DatePipe} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list',
@@ -16,7 +17,7 @@ import {CommonModule, DatePipe} from "@angular/common";
 export class ListComponent implements OnInit{
 
   public events : IEvent[] = [];
-  constructor(private _eventService : EventsService) {
+  constructor(private _eventService : EventsService, private router: Router) {
 
   }
 
@@ -26,5 +27,9 @@ export class ListComponent implements OnInit{
     }).catch((error) => {
       console.error(error);
     });
+  }
+
+  editEvent(event: IEvent) {
+    this.router.navigate(['edit', event.Id], {state: {event: event}});
   }
 }
